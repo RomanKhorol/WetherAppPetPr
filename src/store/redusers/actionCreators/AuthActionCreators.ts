@@ -9,15 +9,16 @@ import {
 
 import { IauthUser } from "../../../models/IauthTipes";
 import { AuthState } from "../slices/AuthSlice";
+import { instanceAuth } from "../../../components/axios";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
 const token = {
   set(token: string) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    instanceAuth.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = "";
+    instanceAuth.defaults.headers.common.Authorization = "";
   },
 };
 
@@ -27,7 +28,7 @@ export const register = createAsyncThunk<
   { rejectValue: string }
 >("auth/register", async (credentials, thunkAPI) => {
   try {
-    const { data } = await axios.post("/users/signup", credentials);
+    const { data } = await instanceAuth.post("/users/signup", credentials);
 
     token.set(data.token);
 
@@ -45,7 +46,7 @@ export const login = createAsyncThunk<
   { rejectValue: string }
 >("auth/login", async (credentials, thunkAPI) => {
   try {
-    const { data } = await axios.post("/users/login", credentials);
+    const { data } = await instanceAuth.post("/users/login", credentials);
 
     token.set(data.token);
 
@@ -63,7 +64,7 @@ export const logout = createAsyncThunk<
   { rejectValue: string }
 >("auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.post("/users/logout");
+    await instanceAuth.post("/users/logout");
     token.unset();
   } catch (error) {
     let e = error as Error;
@@ -86,7 +87,7 @@ export const fecthCurrentUser = createAsyncThunk<
 
   token.set(persistedToken);
   try {
-    const { data } = await axios.get("/users/current");
+    const { data } = await instanceAuth.get("/users/current");
 
     return data;
   } catch (error) {

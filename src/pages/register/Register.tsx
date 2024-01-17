@@ -3,7 +3,7 @@ import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { useAppDispatch } from "../../hooks/redux";
 import { register } from "../../store/redusers/actionCreators/AuthActionCreators";
 
-const Register: FC = () => {
+const Register: FC = (): JSX.Element => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");

@@ -2,10 +2,12 @@ import { FC, useState } from "react";
 import { useAppDispatch } from "../../hooks/redux";
 import { login } from "../../store/redusers/actionCreators/AuthActionCreators";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
-const Login: FC = () => {
+
+const Login: FC = (): JSX.Element => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const dispatch = useAppDispatch();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const name = e.target.name;

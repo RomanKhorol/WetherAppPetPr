@@ -1,6 +1,10 @@
 import axios from "axios";
 export const instance = axios.create({
   baseURL: "https://api.openweathermap.org/data/2.5/",
-  timeout: 1000,
-  headers: { "X-Custom-Header": "foobar" },
+});
+export const instanceAuth = axios.create({
+  baseURL: "https://connections-api.herokuapp.com",
+});
+export const instanceDailyWether = axios.create({
+  baseURL: "http://api.weatherapi.com/v1/",
 });

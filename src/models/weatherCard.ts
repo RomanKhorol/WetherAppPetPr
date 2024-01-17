@@ -5,6 +5,7 @@ interface mainType {
   temp_max: number;
 }
 interface weatherType {
+  description: string;
   icon: string;
 }
 interface windType {
@@ -12,8 +13,17 @@ interface windType {
 }
 
 export interface WeatherCard {
+  dt: number;
   main: mainType;
-  weather: weatherType;
+  weather: weatherType[];
   wind: windType;
   dt_txt: string;
+}
+
+interface CityType {
+  name: string;
+}
+export interface WeatherList {
+  city: CityType;
+  list: WeatherCard[];
 }

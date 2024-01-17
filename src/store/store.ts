@@ -10,10 +10,12 @@ import {
 } from "redux-persist";
 
 import { authSliceConfigReducer } from "../store/redusers/slices/AuthSlice";
-import { weatherReduser } from "./redusers/slices/FetchWeatherSlice";
+import { weatherReduser } from "./redusers/slices/HourlyWeatherSlice";
+import { threeDaysWeatherReduser } from "./redusers/slices/ThreeDaysSlice";
 const rootReduser = combineReducers({
   auth: authSliceConfigReducer,
   weather: weatherReduser,
+  threedaysWeather: threeDaysWeatherReduser,
 });
 
 const setupStore = () => {

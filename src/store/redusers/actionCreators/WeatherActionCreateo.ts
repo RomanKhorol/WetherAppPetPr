@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { WeatherCard } from "../../../models/weatherCard";
+import { WeatherList } from "../../../models/weatherCard";
 import { fetchDailyWather } from "../apies/WeatherShelfAPI";
 
 export const weatherFetchAction = createAsyncThunk<
-  WeatherCard[],
+  WeatherList[],
   string,
   { rejectValue: string }
 >("weather/fechingWeather", async (data, { rejectWithValue }) => {
