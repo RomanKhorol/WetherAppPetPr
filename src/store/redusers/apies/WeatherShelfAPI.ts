@@ -11,7 +11,7 @@ export async function fetchDailyWather(сity: string) {
 }
 export async function fetchWatherForThreeDays(сity: string) {
   const response = await instanceDailyWether.get<ForecastDailyResponceType>(
-    `forecast.json?key=61bacc7505f044b2a0d160337241201&days=3&q=${сity}`
+    `forecast.json?key=d8a586df377d4c18926205727242501&days=3&q=${сity}`
   );
   console.log(response.data);
   return response.data;
