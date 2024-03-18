@@ -31,7 +31,7 @@ const authSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(
-        register.fulfilled,
+        register.fulfilled.type,
         (state, action: PayloadAction<registerResponceDataType>) => {
           state.user = action.payload.user;
           state.token = action.payload.token;
